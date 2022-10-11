@@ -4,8 +4,8 @@
 # $ python -c 'import secrets; print(secrets.token_hex())'
 SECRET_KEY = "17236097b9d23bbc1d9ea774e451503222cc48b76d8144d45573982baab2ac55"  # nosec
 
-# The server name that the app will be available at.
-SERVER_NAME = "app.pineapple.dev.localhost"
+# The server name that the app will be available at. Don't need for now. Talk to Nigel if needed.
+# SERVER_NAME = "app.pineapple.dev.localhost"
 
 # SQLAlchemy settings
 SQLALCHEMY_DATABASE_URI = (
