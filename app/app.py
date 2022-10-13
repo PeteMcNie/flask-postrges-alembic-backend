@@ -1,7 +1,6 @@
 from flask import Flask
 
 import model as m
-from app.blueprints.example import example
 from app.blueprints.test import test
 
 app = Flask(__name__)
