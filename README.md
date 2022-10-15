@@ -27,7 +27,7 @@ Activate your virtual environment
 
 2. `poetry install` to install the projects dependencies
 
-3. `FLASK_APP=app/app APP_SETTINGS=settings/development.py flask run` this sets the required environment variables and then runs the app. Read below how to get environment variables to load when you enter a directory
+3. `FLASK_APP=app/app APP_SETTINGS=settings/development.py flask --debug run` this sets the required environment variables and then runs the app. Read below how to get environment variables to load when you enter a directory so that you only need to run `flask --debug run` instead.
 
 4. Fire up [localhost:5000/test/test-get-all] (http://127.0.0.1:5000/test/test-get-all) to check it out.
 
