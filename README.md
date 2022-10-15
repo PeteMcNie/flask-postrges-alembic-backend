@@ -12,15 +12,10 @@ I set up this project using Poetry to manage the dependencies. With Poetry we ca
 - Then run: `git init` (this enables git to 'know' about the project so you can commit etc)
 - You will need to change the 'remote' repo the project is pointing at otherwise you will over write this boilerplate NOTE TO SELF: add commands to do this
 
-# Poetry Commands
-- Install poetry on your machine if required go to [poetry docs](https://python-poetry.org/docs/) for info on how to do this.
-
-- `poetry --version`
-- `poetry self update`
-- `poetry init` or `poetry install` (not sure which one of these you will need to run if you have cloned this project)
-
-
 # To run backend and see route in test blueprints file
+
+* You will need to install poetry if you haven't already
+- To install poetry on your machine if required go to [poetry docs](https://python-poetry.org/docs/) for info on how to do this. To check if you have poetry installed already try and run `poetry --version`
 
 Activate your virtual environment
 1. `source $(poetry env info --path)/bin/activate` To get the path to poetry if you need it run: `poetry shell`
@@ -62,3 +57,28 @@ Note: To make VSCode open when you run `direnv edit` place `export EDITOR="code 
 
 # *You should always place the `.direnv` and `.envrc` files in your `.gitignore`*
 
+
+## Datebase setup
+
+Note: If cloning this repo to use. At this point you should decide what table/s you actually want and alter the models file so that your project does not end up with the test_table in it.
+
+Note: You may need to delete the alembic files committed here already and then folloe these instructions to get alembic set up for your migrations.
+
+1. `poetry run alembic init ./alembic` 
+
+2. Inside `alembic.ini` update the `sqlalchemy.url` line to include the db url that is in the development.py file under SQLALCHEMY_DATABASE_URI. Note: in the `almebic.ini` file you do not enter the variable as a string.
+
+3. Update `alembic/env.py` file `target_metadata` line. You need to import your db and use your dbs target_metadata. The lines should be something like this:
+
+`
+from model import db
+target_metadata = [db.metadata]
+`
+
+4. `alembic revision --autogenerate -m '<An alembic revision message here>'` this generates the alembic revision file.
+
+Note: If this doesn't work you mean need to check if an `alembic_version` table exists already in your db. If so, you can delete this so that you can run your first alembic migration.
+
+5. `alembic upgrade head` runs the revision file. 
+
+6. Add new tables or modify current tables and then run steps 4 and 5 again as requried. If you need to rollback an update to your database you can run `alembic downgrade -1`. This reverts your last upgrade so you can make changes if required.

@@ -10,6 +10,7 @@ class TestTable(db.Model):
     created = db.Column(db.DateTime(), default=datetime.utcnow, nullable=False)
     name = db.Column(db.String())
     count = db.Column(db.Integer())
+    number = db.Column(db.Integer())
 
     __tablename__ = 'test_table'
 
@@ -19,4 +20,4 @@ class TestTable(db.Model):
         self.count = count
 
     def __repr__(self):
-        return f'<Test_table(id="{self.id}", created="{self.created}", name="{self.name}", count={self.count})>'
+        return f'<Test_table(id="{self.id}", created="{self.created}", name="{self.name}", count={self.count}, number={self.number if self.number else None})>'
