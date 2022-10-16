@@ -7,12 +7,12 @@
 
 I set up this project using Poetry to manage the dependencies. With Poetry we can lock in the versions of the packages our porject depends upon and then activate our virtual environment so that we know the project will work on anyones machine.
 
-# Firstly
+### Firstly
 - Clone this repo onto your local machine
 - Then run: `git init` (this enables git to 'know' about the project so you can commit etc)
 - You will need to change the 'remote' repo the project is pointing at otherwise you will over write this boilerplate NOTE TO SELF: add commands to do this
 
-# To run backend and see routes in test blueprints file
+### To run backend and see routes in test blueprints file
 
 - You will need to install poetry if you haven't already
 - To install poetry on your machine if required go to [poetry docs](https://python-poetry.org/docs/) for info on how to do this. To check if you have poetry installed already try and run `poetry --version`
@@ -31,7 +31,7 @@ Activate your virtual environment
 Note: `deactivate` closes the virtual environment when you are finished.
 
 
-# Environment variables set on load with direnv (mac)
+### Environment variables set on load with direnv (mac)
 
 Note: Read more about direnv [here](https://shivamarora.medium.com/a-guide-to-manage-your-environment-variables-in-a-better-way-using-direnv-2c1cd475c8e)
 1. Install direnv if you haven't already `brew install direnv`
@@ -55,10 +55,10 @@ b) `direnv edit` opens an editor for you to make changes to the `.envrc` file. O
 
 Note: To make VSCode open when you run `direnv edit` place `export EDITOR="code --wait"` in your `~/.bashrc` or `~/.bash_profile` file.
 
-### *You should always place the `.direnv` and `.envrc` files in your `.gitignore`*
+#### *You should always place the `.direnv` and `.envrc` files in your `.gitignore`*
 
 
-## Datebase setup
+### Datebase setup
 
 Note: If cloning this repo to use. At this point you should decide what table/s you actually want and alter the models file so that your project does not end up with the test_table in it.
 
