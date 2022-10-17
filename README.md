@@ -60,9 +60,17 @@ Note: To make VSCode open when you run `direnv edit` place `export EDITOR="code 
 
 ### Datebase setup
 
+#### Postgres set up
+
+You will need to set up postgres on your machine and create a new database. You will then reference this database in the setting.development.py and almebic.ini files so that the backend and talk to the correct database.
+
+#### *TODO: Add more info about this set up here*
+
+#### Alembic set up
+
 Note: If cloning this repo to use. At this point you should decide what table/s you actually want and alter the models file so that your project does not end up with the test_table in it.
 
-Note: You may need to delete the alembic files committed here already and then folloe these instructions to get alembic set up for your migrations.
+Note: You may need to delete the alembic files committed here already and then follow these instructions to get alembic set up for your migrations.
 
 1. `poetry run alembic init ./alembic` 
 
