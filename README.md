@@ -2,15 +2,23 @@
 
 #### I have not tested any of the notes or commands here yet! They are probably not quite right or completely wrong.
 
+*************************
+
+## To copy this backend boilerplate
+
+- `git clone <url from github>`
+- `rm -rf .git` to remove git files
+- `git remote -v` check that there is no remote for the project you cloned this one from (check you are not going to overwrite this project!)
+- `git init` to start your new project
+- `git add/commit` as required
+- `git remote add origin <url from github>`
+- `git push -u origin main` to add project to github
+
+*************************
 
 ## Initial set up
 
 I set up this project using Poetry to manage the dependencies. With Poetry we can lock in the versions of the packages our porject depends upon and then activate our virtual environment so that we know the project will work on anyones machine.
-
-### Firstly
-- Clone this repo onto your local machine
-- Then run: `git init` (this enables git to 'know' about the project so you can commit etc)
-- You will need to change the 'remote' repo the project is pointing at otherwise you will over write this boilerplate NOTE TO SELF: add commands to do this
 
 ### To run backend and see routes in test blueprints file
 
