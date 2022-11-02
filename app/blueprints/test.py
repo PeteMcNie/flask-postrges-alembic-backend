@@ -28,8 +28,10 @@ def test_get_all():
 def test_get_one(count):
     row = m.TestTable.query.filter(m.TestTable.count == count).one_or_none()
     if row is None:
+        print(f' No rwo found: {row}')
         flash(f"A table with row count {count} was not found!")
-        return redirect(url_for("test_get_all"))
+        return f'No row found with count {count}'
+        # return redirect(url_for("test_get_all"))
     return jsonify(row.__repr__())
 
 
