@@ -1,38 +1,28 @@
-from xml.sax.xmlreader import AttributesImpl
 from flask import Blueprint
 from datetime import datetime
 import model as m
 from flask import jsonify, flash, redirect, url_for, request
-
+# from app.web.renderers import render_json
 
 test = Blueprint("test", __name__, url_prefix="/test")
 
 
-# @attrs.define
-# class TestTable:
-#     id: str
-
 
 @test.route("/test-get-all", methods=["GET"])
+# @render_json()
 def test_get_all():
     test_data = m.TestTable.query.order_by(m.TestTable.count.asc()).all()
-    return jsonify([data.__repr__() for data in test_data])
-
-    # test_list = []
-    # for data in test_data:
-    #     test.list.append(TestTable(id=data.id))
-    # return jsonify(test_list)
+    return jsonify([dict(id=data.id, created=data.created, name=data.name, count=data.count) for data in test_data])
 
 
 @test.route("/test-get-one/<count>", methods=["GET"])
 def test_get_one(count):
     row = m.TestTable.query.filter(m.TestTable.count == count).one_or_none()
     if row is None:
-        print(f' No rwo found: {row}')
+        print(f'No row found: {row}')
         flash(f"A table with row count {count} was not found!")
-        return f'No row found with count {count}'
-        # return redirect(url_for("test_get_all"))
-    return jsonify(row.__repr__())
+        return jsonify(dict(message="that was annoying"))
+    return jsonify(dict(id=row.id, created=row.created) for row in row)
 
 
 @test.route("/test-add/<name>/<count>", methods=["GET", "POST"])

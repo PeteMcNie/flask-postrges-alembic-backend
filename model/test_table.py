@@ -18,6 +18,3 @@ class TestTable(db.Model):
         self.created = created
         self.name = name
         self.count = count
-
-    def __repr__(self):
-        return f'<Test_table(id="{self.id}", created="{self.created}", name="{self.name}", count={self.count}, number={self.number if self.number else None})>'
