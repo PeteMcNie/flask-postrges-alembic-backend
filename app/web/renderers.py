@@ -25,7 +25,9 @@ class render_json(object):
 
             response = app.response_class(jsonify(data), 200)
             response.content_type = "application/json; charset=utf-8"
-            response.headers.set("Cache-Control", "private, no-cache, no-store, must-revalidate")
+            response.headers.set(
+                "Cache-Control", "private, no-cache, no-store, must-revalidate"
+            )
             response.headers.set("Expires", "Sat, 01 Jan 2000 00:00:00 GMT")
             response.headers.set("Pragma", "no-cache")
 

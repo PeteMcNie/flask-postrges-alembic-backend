@@ -10,6 +10,6 @@ SECRET_KEY = "17236097b9d23bbc1d9ea774e451503222cc48b76d8144d45573982baab2ac55" 
 # SQLAlchemy settings
 # You will need to set up a datebase to use to postgres and reference it here and in the alembic.ini file
 SQLALCHEMY_DATABASE_URI = (
-    'postgresql://postgres:password@localhost:5431/pineapple?application_name=app'
+    "postgresql://postgres:password@localhost:5431/pineapple?application_name=app"
 )
 SQLALCHEMY_ECHO = True

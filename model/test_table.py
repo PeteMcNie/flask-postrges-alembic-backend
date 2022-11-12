@@ -13,7 +13,7 @@ class TestTable(db.Model):
     count = db.Column(db.Integer())
     number = db.Column(db.Integer())
 
-    __tablename__ = 'test_table'
+    __tablename__ = "test_table"
 
     def __init__(self, created, name, count):
         self.created = created
