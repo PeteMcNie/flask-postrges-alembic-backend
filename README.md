@@ -67,9 +67,9 @@ Note: To make VSCode open when you run `direnv edit` place `export EDITOR="code 
 
 *************************
 
-### Datebase setup
+## Datebase setup
 
-#### Postgres
+### Postgres
 
 See 'Postgres set up' below if you need to set up a new database and link your project to this new datbase.
 
@@ -81,17 +81,17 @@ To access a postgres database you have already linked to your project use the co
 - `crtl d` - exits postgres in your terminal
 
 
-#### Postgres set up
+### Postgres set up
 
 You will need to set up postgres on your machine and create a new database. You will then reference this database in the setting.development.py and almebic.ini files so that the backend and talk to the correct database.
 
-#### *TODO: Add more info about this set up here*
+### *TODO: Add more info about this set up here*
 
 *************************
 
-### Accessing your database from your python project
+## Accessing your database from your python project
 
-#### Alembic set up
+### Alembic set up
 
 Note: If cloning this repo to use. At this point you should decide what table/s you actually want and alter the models file so that your project does not end up with the test_table in it.
 
@@ -118,7 +118,7 @@ Note: If this doesn't work you mean need to check if an `alembic_version` table 
 
 *************************
 
-### Formatters: Black, mypy etc
+## Formatters: Black, mypy etc
 
 To run the different formatters in your terminal make sure you have first activated your virtual environment then follow the steps below based on the formatter/service you require:
 
