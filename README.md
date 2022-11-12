@@ -68,6 +68,19 @@ Note: To make VSCode open when you run `direnv edit` place `export EDITOR="code 
 
 ### Datebase setup
 
+
+#### Postgres
+
+See 'Postgres set up' below if you need to set up a new database and link your project to this new datbase.
+
+To access a postgres database you have already linked to your project use the commands below in your terminal:
+
+- `psql <database_name>` - accesses your database via the terminal
+- `psql` - defaults to the default database for your postgres
+- `\dt` - lists all tables in your database
+- `crtl d` - exits postgres in your terminal
+
+
 #### Postgres set up
 
 You will need to set up postgres on your machine and create a new database. You will then reference this database in the setting.development.py and almebic.ini files so that the backend and talk to the correct database.
@@ -98,3 +111,14 @@ Note: If this doesn't work you mean need to check if an `alembic_version` table 
 5. `alembic upgrade head` runs the revision file. 
 
 6. Add new tables or modify current tables and then run steps 4 and 5 again as requried. If you need to rollback an update to your database you can run `alembic downgrade -1`. This reverts your last upgrade so you can make changes if required.
+
+
+### Formatters: Black, mypy etc
+
+To run the different formatters in your terminal make sure you have first activated your virtual environment then follow the steps below based on the formatter/service you require:
+
+- Black: formats python code. Run: `black .`
+- mypy: type-checks python code. Run `mypy .`
+- isort: orders your import statements. Run `isort.`
+
+Note: bandit, flake8 and pylint are also included in this project but I have not run these yet.
