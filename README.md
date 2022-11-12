@@ -2,7 +2,6 @@
 
 #### I have not tested any of the notes or commands here yet! They are probably not quite right or completely wrong.
 
-*************************
 
 ## To copy this backend boilerplate
 
@@ -66,8 +65,9 @@ Note: To make VSCode open when you run `direnv edit` place `export EDITOR="code 
 #### *You should always place the `.direnv` and `.envrc` files in your `.gitignore`*
 
 
-### Datebase setup
+*************************
 
+### Datebase setup
 
 #### Postgres
 
@@ -86,6 +86,10 @@ To access a postgres database you have already linked to your project use the co
 You will need to set up postgres on your machine and create a new database. You will then reference this database in the setting.development.py and almebic.ini files so that the backend and talk to the correct database.
 
 #### *TODO: Add more info about this set up here*
+
+*************************
+
+### Accessing your database from your python project
 
 #### Alembic set up
 
@@ -112,6 +116,7 @@ Note: If this doesn't work you mean need to check if an `alembic_version` table 
 
 6. Add new tables or modify current tables and then run steps 4 and 5 again as requried. If you need to rollback an update to your database you can run `alembic downgrade -1`. This reverts your last upgrade so you can make changes if required.
 
+*************************
 
 ### Formatters: Black, mypy etc
 
