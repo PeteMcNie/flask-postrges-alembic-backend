@@ -85,7 +85,13 @@ To access a postgres database you have already linked to your project use the co
 
 You will need to set up postgres on your machine and create a new database. You will then reference this database in the setting.development.py and almebic.ini files so that the backend and talk to the correct database.
 
-### *TODO: Add more info about this set up here*
+See the [postgres docs](https://www.postgresql.org/docs/current/) to set up a new database. Below are some common commands that you can run in your terminal.
+
+- `createdb` - yup, it's that easy this will default to the name of your terminal/machine. If this name is already taken it won't work.
+- `createdb <new_db_name_here>` - that's better
+- `dropdb <db_name_you_want_to_remove>` - to get rid of a db you don't want
+- `psql <database_name>` - accesses your database via the terminal
+
 
 *************************
 
