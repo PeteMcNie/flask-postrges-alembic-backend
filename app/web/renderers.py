@@ -1,10 +1,10 @@
 import structlog
-# Import my app
-# import structlog with poetry
-
 from flask import jsonify
 
+import app
+
 log = structlog.getLogger(__name__)
+
 
 class render_json(object):
     def __call__(self, f):
