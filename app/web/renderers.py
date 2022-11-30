@@ -1,8 +1,6 @@
 import structlog
 from flask import jsonify
 
-import app
-
 log = structlog.getLogger(__name__)
 
 
@@ -11,9 +9,11 @@ class render_json(object):
         def wrapped(*args, **kwargs):
             try:
                 data = f(*args, **kwargs)
+                status = 200
             except Exception as e:
                 log.exception(e)
                 data = dict(message=e.message)
+                status = 500
 
             if isinstance(data, list):
                 raise TypeError(
@@ -23,7 +23,8 @@ class render_json(object):
             if not isinstance(data, dict):
                 return data
 
-            response = app.response_class(jsonify(data), 200)
+            response = jsonify(data)
+            response.status_code = status
             response.content_type = "application/json; charset=utf-8"
             response.headers.set(
                 "Cache-Control", "private, no-cache, no-store, must-revalidate"

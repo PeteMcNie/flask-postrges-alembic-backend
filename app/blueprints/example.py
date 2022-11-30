@@ -1,20 +1,20 @@
 from datetime import datetime
 
-from flask import Blueprint, flash, jsonify, redirect, request, url_for
+from flask import Blueprint, flash, redirect, url_for
 
 import model as m
-
-# from app.web.renderers import render_json
+from app.web.error_handler import make_error
+from app.web.renderers import render_json
 
 example = Blueprint("example", __name__, url_prefix="/example")
 
 
 @example.route("/example-get-all", methods=["GET"])
-# @render_json()
+@render_json()
 def example_get_all():
     example_data = m.ExampleTable.query.order_by(m.ExampleTable.count.asc()).all()
-    return jsonify(
-        [
+    return dict(
+        results=[
             dict(id=data.id, created=data.created, name=data.name, count=data.count)
             for data in example_data
         ]
@@ -22,14 +22,18 @@ def example_get_all():
 
 
 @example.route("/example-get-one/<count>", methods=["GET"])
+@render_json()
 def example_get_one(count):
     row = m.ExampleTable.query.filter(m.ExampleTable.count == count).one_or_none()
 
     if row is None:
         print(f"No row found: {row}")
-        # flash(f"A table with row count {count} was not found!")
-        return jsonify(dict(message=f"A table with row count {count} was not found!"))
-    return jsonify(dict(id=row.id, created=row.created, name=row.name, count=row.count))
+        return make_error(
+            message=f"A table with row count {count} was not found!", status=400
+        )
+    return dict(
+        id=row.id, created=row.created, name=row.name, count=row.count
+    )  # Don't need to return dict of results when only one result
 
 
 @example.route("/example-add/<name>/<count>", methods=["GET", "POST"])

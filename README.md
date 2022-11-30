@@ -17,9 +17,9 @@
 
 ## Initial set up
 
-I set up this project using Poetry to manage the dependencies. With Poetry we can lock in the versions of the packages our porject depends upon and then activate our virtual environment so that we know the project will work on anyones machine.
+I set up this project using Poetry to manage the dependencies. With Poetry we can lock in the versions of the packages the project depends upon and then activate our virtual environment so that we know the project will work on any machine.
 
-### To run backend and see routes in test blueprints file
+### To run backend and see routes in example blueprints file
 
 - You will need to install poetry if you haven't already
 - To install poetry on your machine if required go to [poetry docs](https://python-poetry.org/docs/) for info on how to do this. To check if you have poetry installed already try and run `poetry --version`
@@ -31,9 +31,9 @@ Activate your virtual environment
 
 3. `FLASK_APP=app/app APP_SETTINGS=settings/development.py flask --debug run` this sets the required environment variables and then runs the app. Read below how to get environment variables to load when you enter a directory so that you only need to run `flask --debug run` instead.
 
-4. Fire up [localhost:5000/test/test-get-all](http://127.0.0.1:5000/test/test-get-all) to check it out.
+4. Fire up [localhost:5000/example/example-get-all](http://127.0.0.1:5000/test/test-get-all) to check it out.
 
-5. You can checkout all the other routes in the `test` blueprint file. The add and update routes will not work at this stage...need to set up alembic first.
+5. You can checkout all the other routes in the `example` blueprint file. The add and update routes will not work at this stage...they need to set up alembic first.
 
 Note: `deactivate` closes the virtual environment when you are finished.
 
@@ -73,7 +73,7 @@ Note: To make VSCode open when you run `direnv edit` place `export EDITOR="code 
 
 See 'Postgres set up' below if you need to set up a new database and link your project to this new datbase.
 
-To access a postgres database you have already linked to your project use the commands below in your terminal:
+To access a postgres database you have *already linked* to your project use the commands below in your terminal:
 
 - `psql <database_name>` - accesses your database via the terminal
 - `psql` - defaults to the default database for your postgres
@@ -95,11 +95,11 @@ See the [postgres docs](https://www.postgresql.org/docs/current/) to set up a ne
 
 *************************
 
-## Accessing your database from your python project
+## Accessing your postrgres database from your python project
 
 ### Alembic set up
 
-Note: If cloning this repo to use. At this point you should decide what table/s you actually want and alter the models file so that your project does not end up with the test_table in it.
+Note: If cloning this repo to use. At this point you should decide what table/s you actually want and alter the models file so that your project does not end up with the example_table in it.
 
 Note: You may need to delete the alembic files committed here already and then follow these instructions to get alembic set up for your migrations.
 
@@ -111,6 +111,7 @@ Note: You may need to delete the alembic files committed here already and then f
 
 `
 from model import db
+
 target_metadata = [db.metadata]
 `
 
