@@ -123,6 +123,20 @@ Note: If this doesn't work you mean need to check if an `alembic_version` table 
 
 6. Add new tables or modify current tables and then run steps 4 and 5 again as requried. If you need to rollback an update to your database you can run `alembic downgrade -1`. This reverts your last upgrade so you can make changes if required.
 
+
+#### Alembic ENUM notes:
+
+If you add an enum then need to drop the table which had enum/s generated at the same time then go to recreate the table you will get an error saying the enum already exsists as alembic does not automatically drop enums in the downgrade function. You need to add drop enum lines manually. Example below:
+
+```
+def downgrade() -> None:
+    op.drop_table('overnight_allowance')
+    sa.Enum('NZD', 'AUD', name='currency').drop(op.get_bind()) # THIS LINE WILL DROP THE ENUM
+```
+To check if the enum is in your db prior to dropping and after you can run a command such as:
+
+`SELECT enum_range(null::currency);`
+
 *************************
 
 ## Formatters: Black, mypy etc
